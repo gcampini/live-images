@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+lb config noauto \
+	--clean \
+"${@}"
+
+wget -P config/packages.chroot/ -nc -i packages.chroot.txt
+dpkg-name config/packages.chroot/*
