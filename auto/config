@@ -4,6 +4,8 @@ set -e
 
 lb config noauto \
 	--clean \
+	--ignore-system-defaults \
+	-d bullseye \
 "${@}"
 
 wget -P config/packages.chroot/ -nc -i packages.chroot.txt
