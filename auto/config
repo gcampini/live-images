@@ -2,11 +2,14 @@
 
 set -e
 
+# Bootstrap config
 lb config noauto \
 	--clean \
 	--ignore-system-defaults \
+	--chroot-squashfs-compression-type lz4 \
 	-d bullseye \
 "${@}"
 
+# Packages
 wget -P config/packages.chroot/ -nc -i packages.chroot.txt
 dpkg-name config/packages.chroot/*
