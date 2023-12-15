@@ -5,9 +5,19 @@ set -e
 # Bootstrap config
 lb config noauto \
 	--clean \
+	--mode "debian" \
+	--system "live" \
+	--architectures "amd64" \
+	--distribution "bookworm" \
+	--archive-areas "main contrib non-free" \
+	--apt-source-archives "false" \
+	--security "true" \
+	--updates "true" \
+	--backports "true" \
+	--firmware-binary "true" \
+	--firmware-chroot "true" \
 	--ignore-system-defaults \
 	--chroot-squashfs-compression-type lz4 \
-	-d bullseye \
 "${@}"
 
 # Packages
